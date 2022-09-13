@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="910.0" style="-fx-background-color: #3A0CA3;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.emotionalsongsgraphic.EmotionalsSongsController">
+   <left>
+      <AnchorPane prefHeight="560.0" prefWidth="325.0" style="-fx-background-color: #4361EE; -fx-background-radius: 25;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="15.0" layoutY="32.0" prefHeight="87.0" prefWidth="294.0" text="Emotional Songs" textFill="#f72585">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <Button fx:id="btn_logout" layoutX="51.0" layoutY="517.0" mnemonicParsing="false" onAction="#logoutFormApp" prefHeight="52.0" prefWidth="222.0" style="-fx-background-radius: 50; -fx-background-color: #7209B7;" text="Logout" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_goHome" layoutX="52.0" layoutY="452.0" mnemonicParsing="false" onAction="#goToHomePage" prefHeight="52.0" prefWidth="222.0" style="-fx-background-radius: 50; -fx-background-color: #4CC9F0;" text="Torna alla schermata principale" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_yourPlaylist" layoutX="51.0" layoutY="387.0" mnemonicParsing="false" onAction="#openYourPlaylist" prefHeight="52.0" prefWidth="222.0" style="-fx-background-radius: 50; -fx-background-color: #4CC9F0;" text="Le tue playlist" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="62.0" layoutY="119.0">
+               <image>
+                  <Image url="@../../../../../../../EmotionalSongs/Files/interface/img/Music_Icon.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane layoutX="7.0" layoutY="11.0" prefHeight="578.0" prefWidth="569.0" style="-fx-background-color: #7209B7; -fx-background-radius: 25;">
+               <children>
+                  <TextField fx:id="jLabel_search" layoutX="14.0" layoutY="14.0" prefHeight="40.0" prefWidth="295.0" promptText="Cerca" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-border-color: #4CC9F0;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Button fx:id="btn_search" layoutX="318.0" layoutY="14.0" mnemonicParsing="false" onAction="#seachText" prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 50; -fx-background-color: #4CC9F0;">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0">
+                           <image>
+                              <Image url="@../../../../../../../EmotionalSongs/Files/interface/img/search_FILL0_wght400_GRAD0_opsz48.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <ChoiceBox fx:id="chbx_select" layoutX="433.0" layoutY="14.0" prefHeight="40.0" prefWidth="123.0" style="-fx-background-radius: 50; -fx-background-color: #4CC9F0;" />
+                  <Label layoutX="377.0" layoutY="14.0" prefHeight="40.0" text="Filtro:" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <ScrollPane layoutX="3.0" layoutY="68.0" prefHeight="461.0" prefWidth="565.0" style="-fx-background-color: #7209B7;">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="462.0" prefWidth="550.0" style="-fx-background-color: #7209B7;" />
+                    </content>
+                  </ScrollPane>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

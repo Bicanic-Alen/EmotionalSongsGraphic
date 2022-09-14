@@ -8,9 +8,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.controlsfx.control.action.Action;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -32,6 +34,8 @@ public class EmotionalsSongsController {
     private Parent root;
 
     private RegistraUtente regUser;
+
+    private boolean isEnabled;
 
     //registrazione form
     @FXML
@@ -57,6 +61,27 @@ public class EmotionalsSongsController {
     @FXML
     private PasswordField jPwsField_psw;
 
+    //login
+    @FXML
+    private TextField tF_id;
+    @FXML
+    private PasswordField pF_pswLogIn;
+
+    /**
+     * restituisce un valore booleano per indicare se un utente a gia effetuato un accesso
+     * @return restituisce un booleano
+     */
+    public boolean isEnabled() {
+        return isEnabled;
+    }
+
+    /**
+     * modifica il valore di isEnabled
+     * @param enabled
+     */
+    public void setEnabled(boolean enabled) {
+        isEnabled = enabled;
+    }
 
     /**
      * evento richiama la pagina di registrazione
@@ -142,6 +167,13 @@ public class EmotionalsSongsController {
 
             regUser.registrazione(name, surname, cf, address, numCiv, zip, comune, provincia, email, userID, password);
 
+            Parent root = FXMLLoader.load(getClass().getResource("FormLogin.fxml"));
+            stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setTitle("Emotional Songs - Accedi");
+            stage.setScene(scene);
+            stage.show();
+
         }
         else throw new RegistraUtentiException("ci sono dei campi vuoti");
     }
@@ -159,6 +191,28 @@ public class EmotionalsSongsController {
         stage.setTitle("Emotional Songs - Registrazione");
         stage.setScene(scene);
         stage.show();
+    }
+
+
+    /**
+     * Evento che reinderizza alla form di ricerca se l'utente effetua l'accesso con successo
+     * @param event
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    public void goToSearch(ActionEvent event) throws IOException, NoSuchAlgorithmException {
+        isEnabled = false;
+        isEnabled = regUser.login(tF_id.getText(), pF_pswLogIn.getText());
+        if(isEnabled){
+
+            Parent root = FXMLLoader.load(getClass().getResource("SearchForm.fxml"));
+            stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setTitle("Emotional Songs - Ricerca brano");
+            stage.setScene(scene);
+            stage.show();
+        }
+        else throw new RegistraUtentiException("nome utente o password errati");
     }
 
 
